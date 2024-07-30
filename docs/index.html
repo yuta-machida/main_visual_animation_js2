@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>メインビジュアルアニメーション_svg</title>
+  <title>メインビジュアルアニメーション_png</title>
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
   <link rel="stylesheet" href="./css/test.css">
 </head>
 <body>
@@ -16,30 +17,20 @@
   <main>
     <!-- アニメーション軌道 -->
     <svg width="2000" height="300">
-      <path id="motionPath" 
-      d="M 0,100 c 200,100 400,200 600,100 c 200,-100 400,-200 600,-100 c 200,100 400,200 600,100"
+      <path id="animationPath_pc" 
+      d="M 0,100 c 200,100 400,200 600,100 c 200,-100 400,-200 600,-100 c 200,100 400,200 600,100 c 200,-100 400,-200 600,-100"
+      fill="none"/>
+
+      <path id="animationPath_sp"
+      d="M 0,100 c 50,20 100,40 150,20 c 50,-20 100,-40 150,-20 c 50,20 100,40 150,20 c 50,-20 100,-40 150,-20 c 50,20 100,40 150,20 c 50,-20 100,-40 150,-20"
       fill="none"/>
     </svg>
 
     <div class="main-visual">
-      <div id="leaf1" class="leaf" style="background-image: url(./svg/leaf-1.svg);"></div>
-      <div id="leaf2" class="leaf" style="background-image: url(./svg/leaf-2.svg);"></div>
-      <div id="leaf3" class="leaf" style="background-image: url(./svg/leaf-3.svg);"></div>
-      <div id="leaf4" class="leaf" style="background-image: url(./svg/leaf-4.svg);"></div>
-      <div id="leaf5" class="leaf" style="background-image: url(./svg/leaf-5.svg);"></div>
-      <div id="leaf6" class="leaf" style="background-image: url(./svg/leaf-1.svg);"></div>
-      <div id="leaf7" class="leaf" style="background-image: url(./svg/leaf-2.svg);"></div>
-      <div id="leaf8" class="leaf" style="background-image: url(./svg/leaf-3.svg);"></div>
-      <div id="leaf9" class="leaf" style="background-image: url(./svg/leaf-4.svg);"></div>
-      <div id="leaf10" class="leaf" style="background-image: url(./svg/leaf-5.svg);"></div>
-      <div id="leaf11" class="leaf" style="background-image: url(./svg/leaf-1.svg);"></div>
-      <div id="leaf12" class="leaf" style="background-image: url(./svg/leaf-2.svg);"></div>
-      <div id="leaf13" class="leaf" style="background-image: url(./svg/leaf-3.svg);"></div>
-      <div id="leaf14" class="leaf" style="background-image: url(./svg/leaf-4.svg);"></div>
-      <div id="leaf15" class="leaf" style="background-image: url(./svg/leaf-5.svg);"></div> 
     </div>
   </main>
 
-  <script src="./js/test.js" defer></script>
+  <script src="./js/test.js"></script>
+
 </body>
 </html>

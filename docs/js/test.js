@@ -1,16 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const path = document.querySelector('#motionPath'); //path取得
 
-    const leaves = [];
-    let leafCount = 0;
+  const svgContainer = document.querySelector('.main-visual');
+  const svgSources = [
+    './svg/leaf-1.svg',
+    './svg/leaf-2.svg',
+    './svg/leaf-3.svg',
+    './svg/leaf-4.svg',
+    './svg/leaf-5.svg'
+  ]
+
+  let currentBreakpoint = window.matchMedia("(min-width: 768px)").matches ? 'pc' : 'sp';
+  
+  const applyAnimation = () =>{
+    const isPC = window.matchMedia("(min-width: 768px)").matches;
+    const pathId = isPC ? 'animationPath_pc' : 'animationPath_sp';
+    const path = document.querySelector(`#${pathId}`);
+    const svgCount = isPC ? 15 : 10;
     let delayTime = 0;
 
-    while(leaves[leafCount] !== ""){
-      leaves[leafCount] = document.querySelector(`#leaf${leafCount + 1}`); //idでimg要素取得
-      leaves[leafCount].style.offsetPath = `path('${path.getAttribute('d')}')`; //img要素にpath軌道を設定
-      leaves[leafCount].style.animationDelay = `${delayTime}s` //img要素ごとにanimation-delayを変化
-      leafCount++;
+    //既存のdiv要素を削除
+    svgContainer.innerHTML = '';
+    
+    for(let i = 1;i <= svgCount;i++){
+      //img要素の生成
+      const div = document.createElement('div');
+      div.style.backgroundImage = `url(${svgSources[(i - 1) % svgSources.length]})`;
+      div.className = 'leaf animationPath';
+      
+      //アニメーション付与
+      div.style.offsetPath = `path('${path.getAttribute('d')}')`; //img要素にpath軌道を設定
+      div.style.animationDelay = `${delayTime}s`;
+      
+      svgContainer.appendChild(div);
+      
       delayTime++;
-      console.log(leaves[leafCount]);
-    }
-  });
+    
+  }
+}
+
+const checkBreakpoint = () =>{
+  const isPC = window.matchMedia("(min-width: 768px)").matches;
+  const newBreakpoint = isPC ? 'pc' : 'sp';
+
+  if(newBreakpoint !== currentBreakpoint){
+    currentBreakpoint = newBreakpoint;
+    applyAnimation();
+  }
+}
+
+window.addEventListener('resize',checkBreakpoint);
+
+//初回実行
+applyAnimation();
+});
